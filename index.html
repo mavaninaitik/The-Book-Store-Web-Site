@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book Store - Your Online Bookstore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <!-- HEADER -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" onclick="showPage('home')" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#D35400]" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+                <span class="text-2xl font-bold font-serif text-slate-800">The Book Store</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" id="nav-home" class="nav-link active" onclick="showPage('home')">Home</a>
+                <a href="#" id="nav-books" class="nav-link" onclick="showPage('books')">Books</a>
+                <a href="#" id="nav-about" class="nav-link" onclick="showPage('about')">About Us</a>
+                <a href="#" id="nav-contact" class="nav-link" onclick="showPage('contact')">Contact</a>
+            </div>
+            <div class="flex items-center">
+                 <button onclick="showPage('cart')" class="relative p-2 rounded-full hover:bg-gray-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden ml-4 p-2 rounded-full hover:bg-gray-200">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#" class="block nav-link text-center py-2" onclick="showPage('home')">Home</a>
+            <a href="#" class="block nav-link text-center py-2" onclick="showPage('books')">Books</a>
+            <a href="#" class="block nav-link text-center py-2" onclick="showPage('about')">About Us</a>
+            <a href="#" class="block nav-link text-center py-2" onclick="showPage('contact')">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page active fade-in">
+            
+            <!-- Hero Section -->
+            <div class="container mx-auto px-6 py-16 text-center">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-slate-800 leading-tight">Discover Your Next Adventure</h1>
+                    <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto">Journey through worlds of wonder, mystery, and knowledge. Your perfect book is waiting.</p>
+                    <button class="mt-8 px-8 py-4 btn-primary rounded-full font-bold text-lg" onclick="showPage('books')">Explore Our Collection</button>
+                </div>
+            </div>
+
+            <!-- Featured Books Section -->
+            <div class="container mx-auto px-6 py-12">
+                <h2 class="text-4xl font-bold text-center mb-10">Featured Books</h2>
+                <div id="featured-books" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Book cards will be injected here by JavaScript -->
+                </div>
+            </div>
+            
+            
+            <!-- Features Section -->
+            <div class="bg-slate-800 text-white">
+                <div class="container mx-auto px-6 py-16 grid md:grid-cols-3 gap-10 text-center">
+                    <div class="transform hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-[#E67E22]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">Heart-pounding Thrillers</h3>
+                        <p>Get lost in tales of suspense and mystery that will keep you on the edge of your seat.</p>
+                    </div>
+                     <div class="transform hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-[#E67E22]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">Expansive Fantasy Worlds</h3>
+                        <p>Explore magical realms, epic quests, and unforgettable characters in our vast fantasy collection.</p>
+                    </div>
+                     <div class="transform hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-[#E67E22]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <h3 class="text-2xl font-bold mb-2">Mind-bending Sci-Fi</h3>
+                        <p>Travel through space and time with futuristic stories that challenge the imagination.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        
+        <!-- BOOKS PAGE -->
+        <section id="books" class="page fade-in">
+            <div class="container mx-auto px-6 py-12">
+                <h1 class="text-5xl font-bold text-center mb-4">Our Collection</h1>
+                <p class="text-center text-lg text-slate-600 mb-10 max-w-2xl mx-auto">Browse our curated selection of books. Use the filters and search to find your next favorite read.</p>
+                
+                
+                <!-- Search Bar -->
+                <div class="mb-10 max-w-2xl mx-auto">
+                    <div class="relative">
+                        <input type="text" id="search-input" placeholder="Search by title or author..." class="w-full px-5 py-3 pr-28 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D35400] transition-shadow">
+                        <button id="search-btn" class="absolute top-1/2 right-2 -translate-y-1/2 btn-primary px-6 py-2 rounded-full font-semibold">Search</button>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <button class="filter-btn active px-6 py-2 rounded-full font-semibold bg-[#D35400] text-white" data-genre="all">All Genres</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-semibold bg-white text-slate-700 hover:bg-gray-200" data-genre="Fantasy">Fantasy</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-semibold bg-white text-slate-700 hover:bg-gray-200" data-genre="Sci-Fi">Sci-Fi</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-semibold bg-white text-slate-700 hover:bg-gray-200" data-genre="Thriller">Thriller</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-semibold bg-white text-slate-700 hover:bg-gray-200" data-genre="History">History</button>
+                    <button class="filter-btn px-6 py-2 rounded-full font-semibold bg-white text-slate-700 hover:bg-gray-200" data-genre="Romance">Romance</button>
+                </div>
+
+                <!-- Books Grid -->
+                <div id="books-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                    <!-- Book cards will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page fade-in relative overflow-hidden py-20">
+            <div class="about-background-blur"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center bg-white p-10 rounded-2xl shadow-xl">
+                    <div class="flex justify-center items-center">
+                         <img src="https://www.shutterstock.com/image-photo/book-pile-old-books-on-600nw-2485328203.jpg" alt="Bookstore Interior" class="rounded-2xl shadow-xl w-full max-w-md h-auto">
+                    </div>
+                    <div class="text-left">
+                        <h1 class="text-5xl font-bold mb-6">Our Story</h1>
+                        <p class="text-lg text-slate-600 mb-4 leading-relaxed">
+                            Founded in 2025, The Book Store was born from a simple yet powerful idea: to create a space where book lovers could not only find their next read but also connect with a community that shares their passion. We believe that books are more than just paper and ink; they are gateways to new worlds, sources of knowledge, and catalysts for change.
+                        </p>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                           Our mission is to carefully curate a diverse collection that caters to every reader, from the casual browser to the dedicated bibliophile. We are committed to providing a seamless and enjoyable online experience, bringing the magic of a local bookstore to the comfort of your home.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page fade-in">
+             <div class="container mx-auto px-6 py-20 text-center">
+                <h1 class="text-5xl font-bold mb-4">Get In Touch</h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto">Have questions, suggestions, or just want to talk about books? We'd love to hear from you!</p>
+                <div class="max-w-2xl mx-auto bg-white p-10 rounded-2xl shadow-lg text-left">
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-slate-700 font-semibold mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D35400]">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-slate-700 font-semibold mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D35400]">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-slate-700 font-semibold mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D35400]"></textarea>
+                        </div>
+                        <div class="text-center">
+                             <button type="submit" class="w-full btn-primary px-8 py-4 rounded-lg font-bold text-lg">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- CART PAGE -->
+        <section id="cart" class="page fade-in">
+            <div class="container mx-auto px-6 py-12">
+                <h1 class="text-5xl font-bold text-center mb-10">Your Shopping Cart</h1>
+                <div id="cart-content" class="grid lg:grid-cols-3 gap-12">
+                    
+                    <!-- Cart Items List -->
+                    <div id="cart-items-container" class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg">
+                       <h2 class="text-2xl font-bold border-b pb-4 mb-6">Your Items</h2>
+                       <div id="cart-items-list">
+                            <!-- Cart items will be injected here by JavaScript -->
+                            <p id="empty-cart-message" class="text-slate-500 text-center py-8">Your cart is currently empty. Go find a book!</p>
+                       </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div id="order-summary-container" class="lg:col-span-1 h-fit bg-white p-8 rounded-2xl shadow-lg">
+                        <h2 class="text-2xl font-bold border-b pb-4 mb-6">Order Summary</h2>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-slate-600">Subtotal</span>
+                                <span id="cart-subtotal" class="font-semibold">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-600">Shipping</span>
+                                <span id="cart-shipping" class="font-semibold">$5.00</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-xl pt-4 border-t">
+                                <span>Total</span>
+                                <span id="cart-total">$0.00</span>
+                            </div>
+                        </div>
+                        <button id="checkout-btn" class="w-full btn-primary px-6 py-4 rounded-lg font-bold text-lg" onclick="showCheckoutForm()">Proceed to Checkout</button>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div id="checkout-form-container" class="hidden mt-12 max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-2xl">
+                    <h2 class="text-3xl font-bold mb-8 text-center">Payment Details</h2>
+                     <form id="payment-form">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            
+                            <!-- Shipping Details -->
+                            <div class="md:col-span-2">
+                                <h3 class="text-xl font-semibold mb-4">Shipping Address</h3>
+                            </div>
+                            <div>
+                                <label for="checkout-name" class="block text-slate-700 font-semibold mb-2">Full Name</label>
+                                <input type="text" id="checkout-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                             <div>
+                                <label for="checkout-address" class="block text-slate-700 font-semibold mb-2">Street Address</label>
+                                <input type="text" id="checkout-address" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                             <div>
+                                <label for="checkout-city" class="block text-slate-700 font-semibold mb-2">City</label>
+                                <input type="text" id="checkout-city" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                            <div>
+                                <label for="checkout-zip" class="block text-slate-700 font-semibold mb-2">ZIP Code</label>
+                                <input type="text" id="checkout-zip" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                            
+                             
+                            <!-- Payment Details -->
+                            <div class="md:col-span-2 mt-6">
+                                <h3 class="text-xl font-semibold mb-4">Payment Information</h3>
+                            </div>
+                             <div class="md:col-span-2">
+                                <label for="card-number" class="block text-slate-700 font-semibold mb-2">Card Number</label>
+                                <input type="text" id="card-number" placeholder="&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679;" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                             <div>
+                                <label for="card-expiry" class="block text-slate-700 font-semibold mb-2">Expiry Date</label>
+                                <input type="text" id="card-expiry" placeholder="MM / YY" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                             <div>
+                                <label for="card-cvc" class="block text-slate-700 font-semibold mb-2">CVC</label>
+                                <input type="text" id="card-cvc" placeholder="&#9679;&#9679;&#9679;" class="w-full px-4 py-3 border border-gray-300 rounded-lg" required>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button type="submit" class="w-full md:w-auto btn-primary px-12 py-4 rounded-lg font-bold text-lg">Pay Now</button>
+                        </div>
+                     </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    
+    <!-- FOOTER -->
+    <footer class="bg-slate-800 text-white">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <!-- Left Side -->
+            <div>
+                <p class="font-semibold">&copy; 2025 The Book Store. All Rights Reserved.</p>
+                <p class="text-sm text-slate-400 mt-1">Crafted with passion for book lovers.</p>
+            </div>
+            <!-- Right Side -->
+            <div class="text-sm">
+                <div class="flex items-center justify-center md:justify-start space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.024 11.024 0 005.176 5.176l.759-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span>7203904540</span>
+                </div>
+                <div class="flex items-center justify-center md:justify-start space-x-2 mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <a href="mailto:mavaninaitik45@gmail.com" class="hover:text-[#E67E22] transition-colors">mavaninaitik45@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm mx-auto transform scale-95 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-500 mx-auto mb-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <h3 class="text-2xl font-bold mb-2">Thank You!</h3>
+            <p class="text-slate-600 mb-6">Your order has been placed successfully. We'll send you a confirmation email shortly.</p>
+            <button onclick="closeModal()" class="btn-secondary px-6 py-2 rounded-lg font-semibold">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+

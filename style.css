@@ -1,0 +1,80 @@
+/* Custom styles and animations */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8F7F2; /* Creamy background */
+    color: #2C3E50; /* Dark slate text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: #D35400; /* Burnt orange */
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.page {
+    display: none; /* Hide pages by default */
+}
+
+.page.active {
+    display: block; /* Show active page */
+}
+
+/* Page transition animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.book-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.btn-primary {
+    background-color: #D35400;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #E67E22;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+     background-color: #34495E;
+     color: white;
+     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #2C3E50;
+    transform: scale(1.05);
+}
